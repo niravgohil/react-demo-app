@@ -28,6 +28,9 @@ const PropertyFragment = createFragment<PropertyData>(
     fragment Property_property on Property {
       id
       livingSurface
+      landSurface
+      numberOfRooms
+      numberOfParkings
     }
   `
 );
@@ -38,6 +41,9 @@ const PropertyUpsertLead = createMutation<PropertyUpsertMutation, {}>(graphql`
       property {
         id
         livingSurface
+        landSurface
+        numberOfRooms
+        numberOfParkings
       }
     }
   }
@@ -82,19 +88,13 @@ export const Property = (props: Props) => {
                   padding: 16,
                 }}
               >
-                <PropertyUpsertLead>
-                  {(/* use { mutate, mutating } to commit changes to the API */) => (
+                <PropertyUpsertLead lead={props} >
+                  {({mutate}/* use { mutate, mutating } to commit changes to the API */) => (
                     <>
                       <Typography variant="h6" css={{ marginBottom: '25px' }}>
                         Property
                       </Typography>
-                      <MyEnhancedForm
-                        user={{
-                          living_surface: '',
-                          land_surface: '',
-                          number_of_rooms: '',
-                          number_of_parkings: '',
-                        }}
+                      <MyEnhancedForm handleSubmit={ (obj)=> { mutate({ property: obj });alert('Property Saved Successfully.') } }
                       />
                     </>
                   )}

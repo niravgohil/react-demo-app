@@ -13,6 +13,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from '../../controls/link';
 import { type FragmentRefs, createFragment } from '../../controls/relay';
 import type { Properties_root } from './__generated__/Properties_root.graphql';
@@ -78,6 +79,7 @@ export const Properties = (props: Props) => {
                       <TableCell>Land surface</TableCell>
                       <TableCell>Number Of Rooms</TableCell>
                       <TableCell>Number of parkings</TableCell>
+                      <TableCell></TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -89,6 +91,7 @@ export const Properties = (props: Props) => {
                           <TableCell>{node.landSurface}</TableCell>
                           <TableCell>{node.numberOfRooms}</TableCell>
                           <TableCell>{node.numberOfParkings}</TableCell>
+                          <TableCell><DeleteIcon/></TableCell>
                         </TableRow>
                       );
                     })}
